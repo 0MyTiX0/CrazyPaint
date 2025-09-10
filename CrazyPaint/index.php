@@ -1,0 +1,101 @@
+    <!DOCTYPE html>
+  <html lang="en" class="size-full">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <script src="https://cdn.tailwindcss.com"></script>
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet" />
+      <link rel="icon" href="pictures/CrazyPaint-favicon.png" type="image/x-icon" />
+      <title>CrazyPaint</title>
+    </head>
+    <body class="bg-white min-h-screen flex flex-col">
+      <!-- Header -->
+      <header class="flex items-center justify-between border-2 rounded-xl p-4 mx-4 mt-4">
+        <div class="flex items-center gap-2">
+          <img src="pictures/CrazyPaint-favicon.png" class="w-12 h-12" alt="Logo" />
+          <span class="font-handwriting text-2xl">Crazy Paint</span>
+        </div>
+        <div class="flex flex-col items-center">
+          <span class="font-handwriting">Malus</span>
+          <div class="border-2 rounded-full w-32 h-12"></div>
+        </div>
+        <div class="flex flex-col items-center flex-1 mx-8">
+          <span class="font-handwriting">Barre De Crazyness</span>
+          <div class="flex items-center gap-2">
+            <div class="border-2 rounded-full w-64 h-8 flex items-center">
+              <!-- Barre de crazyness -->
+              <div class="bg-purple-300 h-8 rounded-l-full" style="width: 60%"></div>
+            </div>
+            <div class="border-2 rounded-full w-12 h-12 flex items-center justify-center font-handwriting">Max</div>
+          </div>
+        </div>
+        <div class="flex flex-col items-center gap-2">
+          <span class="font-handwriting">Scoreboard</span>
+          <button class="border-2 rounded-lg w-10 h-10 flex items-center justify-center">
+            <!-- Icon burger -->
+            <svg width="24" height="24">
+              <rect y="4" width="24" height="2" />
+              <rect y="11" width="24" height="2" />
+              <rect y="18" width="24" height="2" />
+            </svg>
+          </button>
+        </div>
+      </header>
+
+      <!-- Main content -->
+      <main class="flex flex-1 mx-4 mb-4 mt-2 gap-4">
+        <!-- Zone de dessin -->
+        <section class="flex-1 border-2 rounded-xl bg-white p-4 flex items-center justify-center">
+          <!-- Canvas ici -->
+          <canvas id="paint-canvas" class="w-full h-full border-2 rounded-xl"></canvas>
+        </section>
+        <!-- Barre latérale droite -->
+        <aside class="w-1/4 flex flex-col items-center border-2 rounded-xl bg-white p-4">
+          <div class="w-full h-1/2 flex items-center justify-center border-2 rounded-xl mb-2">
+            <img src="pictures/doge.jpg" class="object-contain h-full" alt="Image à reproduire" />
+          </div>
+          <span class="font-handwriting mb-2">Barre d'outils</span>
+          <div class="grid grid-cols-4 grid-rows-2 gap-4">
+            <!-- Outils -->
+            <div class="border-2 rounded-lg w-12 h-12"></div>
+            <div class="border-2 rounded-lg w-12 h-12"></div>
+            <div class="border-2 rounded-lg w-12 h-12"></div>
+            <div class="border-2 rounded-lg w-12 h-12"></div>
+            <div class="border-2 rounded-lg w-12 h-12"></div>
+            <div class="border-2 rounded-lg w-12 h-12"></div>
+            <div class="border-2 rounded-lg w-12 h-12"></div>
+            <div class="border-2 rounded-lg w-12 h-12"></div>
+          </div>
+          <!-- Palette de couleurs -->
+          <span class="font-handwriting my-2">Palette de couleurs</span>
+          <div class="flex flex-row items-center w-full mt-2 gap-4 justify-center">
+            <!-- Color picker -->
+            <input id="custom-color-picker" type="color" class="w-12 h-12 border-4 border-gray-300 rounded-lg bg-white cursor-pointer" title="Choisir une couleur" />
+            <!-- Palette -->
+            <div class="grid grid-cols-4 grid-rows-3 gap-2">
+              <div class="border-2 rounded-lg w-8 h-8" style="background-color:#000000"></div>
+              <div class="border-2 rounded-lg w-8 h-8" style="background-color:#808080"></div>
+              <div class="border-2 rounded-lg w-8 h-8" style="background-color:#A0522D"></div>
+              <div class="border-2 rounded-lg w-8 h-8" style="background-color:#FF0000"></div>
+              <div class="border-2 rounded-lg w-8 h-8" style="background-color:#FFA500"></div>
+              <div class="border-2 rounded-lg w-8 h-8" style="background-color:#FFFF00"></div>
+              <div class="border-2 rounded-lg w-8 h-8" style="background-color:#00FF00"></div>
+              <div class="border-2 rounded-lg w-8 h-8" style="background-color:#00FFFF"></div>
+              <div class="border-2 rounded-lg w-8 h-8" style="background-color:#0000FF"></div>
+              <div class="border-2 rounded-lg w-8 h-8" style="background-color:#800080"></div>
+              <div class="border-2 rounded-lg w-8 h-8" style="background-color:#FFC0CB"></div>
+              <div class="border-2 rounded-lg w-8 h-8" style="background-color:#FFFFFF"></div>
+            </div>
+          </div>
+        </aside>
+      </main>
+      <style>
+        .font-handwriting {
+          font-family: 'Indie Flower', cursive;
+          font-weight: 700;
+        }
+      </style>
+    </body>
+  </html>
