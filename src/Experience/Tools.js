@@ -44,8 +44,8 @@ export default class Tools {
     }
   }
   setActiveColor() {
-    // this.colorDisplay.style.backgroundColor =
-    // this.experience.paint.parameters.pencilColor;
+    this.colorDisplay.style.backgroundColor =
+      this.experience.paint.parameters.pencilColor;
   }
   changeColor(color) {
     this.experience.paint.parameters.pencilColor = color;
