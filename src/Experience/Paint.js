@@ -5,27 +5,29 @@ export default class Paint {
     this.experience = new Experience();
     this.canvas = this.experience.canvas;
     this.debug = this.experience.debug;
-    this.pencilRadius = this.experience.tools.pencilRadius;
-    this.pencilColor = this.experience.tools.pencilColor;
+
+    this.clock = null;
 
     this.parameters = {};
-    this.parameters.canvasWidth = 1348;
-    this.parameters.canvasHeight = 735;
+    this.parameters.canvasWidth = window.innerWidth - 460;
+    this.parameters.canvasHeight = window.innerHeight - 176;
     this.parameters.backgroundColor = "#b52a2aff";
     this.parameters.eraseTimer = 4000;
+    this.parameters.eraseSpeed = 20;
+    this.parameters.pencilRadius = 20;
+    this.parameters.pencilColor = "#000000";
+    this.parameters.activeTool = "pencil";
 
     //debug
     if (this.debug.active) {
       this.debugFolder = this.debug.ui.addFolder("🖼️ Environnement");
-      this.debugFolder.close();
+      // this.debugFolder.close();
     }
 
     this.setInstance();
     this.setDebug();
   }
   setInstance() {
-    // this.canvas.style.width = this.parameters.canvasWidth + "px";
-    // this.canvas.style.height = this.parameters.canvasHeight + "px";
     this.canvas.width = this.parameters.canvasWidth;
     this.canvas.height = this.parameters.canvasHeight;
     this.context = this.canvas.getContext("2d");
@@ -53,43 +55,81 @@ export default class Paint {
         .onChange(() => {
           canvas.height = this.parameters.canvasHeight;
         });
+      this.debugFolder
+        .add(this.parameters, "eraseTimer")
+        .min(0)
+        .max(20000)
+        .step(500);
+      this.debugFolder
+        .add(this.parameters, "eraseSpeed")
+        .min(0)
+        .max(50)
+        .step(0.01);
+      this.debugFolder
+        .add(this.parameters, "pencilRadius")
+        .min(0)
+        .max(50)
+        .step(1);
+      this.debugFolder.addColor(this.parameters, "pencilColor");
     }
   }
   drawing() {
     for (const stroke of this.experience.mouse.drawingHistory) {
-      const filteredPoints = stroke.points.filter(
-        (point) =>
-          this.experience.time.elapsed - point.time < this.parameters.eraseTimer
-      );
-      stroke.points = filteredPoints;
+      let filteredPoints = [];
+
+      if (
+        this.experience.time.elapsed - stroke.time >
+        this.parameters.eraseTimer
+      ) {
+        this.clock += this.experience.time.delta;
+        filteredPoints = stroke.points;
+        while (this.clock >= this.parameters.eraseSpeed) {
+          this.clock -= this.parameters.eraseSpeed;
+          if (stroke.points.length > 0) filteredPoints.shift();
+        }
+      } else {
+        filteredPoints = stroke.points;
+      }
 
       if (filteredPoints.length < 2) continue;
 
       this.drawStroke(filteredPoints, stroke.color, stroke.radius);
     }
 
+    this.experience.mouse.drawingHistory =
+      this.experience.mouse.drawingHistory.filter(
+        (stroke) => stroke.points.length >= 2
+      );
+
     if (this.experience.mouse.currentStroke) {
-      const filteredPoints = this.experience.mouse.currentStroke.points.filter(
-        (point) =>
-          this.experience.time.elapsed - point.time < this.parameters.eraseTimer
-      );
-      this.experience.mouse.currentStroke.points = filteredPoints;
+      let stroke = this.experience.mouse.currentStroke;
+      let filteredPoints = [];
+
+      if (
+        this.experience.time.elapsed - stroke.time >
+        this.parameters.eraseTimer
+      ) {
+        this.clock += this.experience.time.delta;
+        filteredPoints = stroke.points;
+        while (this.clock >= this.parameters.eraseSpeed) {
+          this.clock -= this.parameters.eraseSpeed;
+          if (stroke.points.length > 0) filteredPoints.shift();
+        }
+      } else {
+        filteredPoints = stroke.points;
+      }
+
       if (filteredPoints.length < 2) return;
-      this.drawStroke(
-        filteredPoints,
-        this.experience.mouse.currentStroke.color,
-        this.experience.mouse.currentStroke.radius
-      );
+
+      this.drawStroke(filteredPoints, stroke.color, stroke.radius);
     }
   }
 
   drawStroke(stroke, color, radius) {
-    // console.log(stroke, color, radius);
-
-    this.context.lineWidth = radius ?? this.pencilRadius;
+    this.context.lineWidth = radius ?? this.parameters.pencilRadius;
     this.context.lineCap = "round";
     this.context.lineJoin = "round";
-    this.context.strokeStyle = color ?? this.pencilColor;
+    this.context.strokeStyle = color ?? this.parameters.pencilColor;
 
     this.context.beginPath();
     this.context.moveTo(stroke[0].x, stroke[0].y);
