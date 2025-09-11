@@ -16,11 +16,10 @@ export default class Experience {
     //Globall access
     window.experience = this;
 
-    //Options
     this.canvas = canvas;
     this.debug = new Debug();
-    this.tools = new Tools();
     this.paint = new Paint();
+    this.tools = new Tools();
     this.mouse = new Mouse();
     this.time = new Time();
 
