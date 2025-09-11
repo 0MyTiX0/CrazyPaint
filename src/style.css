@@ -1,13 +1,36 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+}
+
+.font-handwriting {
+  font-family: "Indie Flower", cursive;
+  font-weight: 700;
 }
 
 html,
 body {
   overflow: hidden;
+  height: 100%;
 }
 
 .canvas {
   box-shadow: 3px 3px 20px 0 #00000034;
+}
+
+header {
+  backdrop-filter: blur(8px);
+}
+
+@media (max-width: 768px) {
+  aside {
+    width: 16rem !important; /* w-64 */
+  }
+}
+
+@media (max-width: 640px) {
+  aside {
+    width: 12rem !important; /* w-48 */
+  }
 }

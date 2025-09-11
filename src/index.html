@@ -1,208 +1,190 @@
 <!doctype html>
 <html lang="en" class="size-full">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=leaderboard"
-    />
-    <link
-      rel="icon"
-      href="pictures/CrazyPaint-favicon.png"
-      type="image/x-icon"
-    />
-    <title>CrazyPaint</title>
-  </head>
-  <body class="bg-white min-h-screen flex flex-col">
-    <!-- Header -->
-    <header
-      class="flex items-center justify-between border-2 rounded-xl p-4 mx-4 mt-4"
-    >
-      <div class="flex items-center gap-2">
-        <img
-          src="pictures/CrazyPaint-favicon.png"
-          class="w-12 h-12"
-          alt="Logo"
-        />
-        <span class="font-handwriting text-2xl">Crazy Paint</span>
-      </div>
-      <div class="flex flex-col items-center">
-        <span class="font-handwriting">Malus</span>
-        <div class="border-2 rounded-full w-32 h-12"></div>
-      </div>
-      <div class="flex flex-col items-center flex-1 mx-8">
-        <span class="font-handwriting">Barre De Crazyness</span>
-        <div class="flex items-center gap-2">
-          <div class="border-2 rounded-full w-64 h-8 flex items-center">
-            <!-- Barre de crazyness -->
-            <div
-              class="bg-purple-300 h-8 rounded-l-full"
-              style="width: 60%"
-            ></div>
-          </div>
-          <div
-            class="border-2 rounded-full w-12 h-12 flex items-center justify-center font-handwriting"
-          >
-            Max
-          </div>
-        </div>
-      </div>
-      <div
-        class="flex flex-col items-center gap-2 hover:cursor-pointer transition-transform duration-200 hover:scale-110"
-      >
-        <span class="font-handwriting">Leaderboard</span>
-        <button
-          class="border-2 rounded-lg w-10 h-10 flex items-center justify-center"
-        >
-          <!-- Icon burger -->
-          <span class="material-symbols-outlined">leaderboard</span>
-        </button>
-      </div>
-    </header>
 
-    <!-- Modal Scoreboard -->
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=leaderboard" />
+  <link rel="icon" href="pictures/CrazyPaint-favicon.png" type="image/x-icon" />
+  <title>CrazyPaint</title>
+</head>
+
+<body class="h-screen flex overflow-hidden bg-gradient-to-br from-yellow-400 via-pink-400 via-green-300 to-blue-400">
+  <!-- Zone principale (Header + Canvas) -->
+  <div class="flex flex-col flex-1">
+    <!-- Header -->
     <div
-      id="scoreboard-modal"
-      class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden"
-    >
-      <div class="bg-white rounded-lg p-4 w-1/2">
-        <h2 class="font-handwriting text-xl mb-4">Leaderboard</h2>
-        <div id="scoreboard" class="max-h-64 overflow-y-auto">
-          <!-- Scores -->
+      class="flex items-center justify-between rounded-xl p-4 m-3 h-[120px] bg-white/80 shadow-lg backdrop-blur-sm border border-white/30">
+      <!-- Logo et titre -->
+      <div
+        class="flex items-center gap-4 transition-all duration-300 hover:scale-105 bg-gradient-to-r from-purple-200 to-pink-200 px-4 py-3 rounded-xl shadow-md hover:shadow-lg border-2 border-purple-300/50 group">
+        <div class="relative group-hover:scale-110 transition-transform duration-200">
+          <img src="pictures/CrazyPaint-favicon.png" class="w-12 h-12 drop-shadow-lg" alt="Logo" />
+          <div class="absolute -top-1 -right-1 w-4 h-4 bg-yellow-400 rounded-full animate-pulse"></div>
+        </div>
+        <div class="flex flex-col">
+          <span class="font-handwriting text-2xl font-bold text-purple-800 drop-shadow-sm">Crazy Paint</span>
+          <span class="font-handwriting text-xs text-purple-600">Art & Fun</span>
+        </div>
+      </div>
+
+      <!-- Barre de progression intégrée -->
+      <div
+        class="flex flex-col justify-center h-[80px] flex-1 mx-8 transition-all duration-300 hover:scale-105 bg-gradient-to-b from-blue-100 to-purple-100 px-6 py-2 rounded-xl shadow-md hover:shadow-lg border-2 border-blue-300/50 group">
+        <div class="flex items-center justify-center gap-2 mb-1">
+          <span class="font-handwriting text-base font-bold text-purple-700">Barre De Crazyness</span>
+          <span class="text-lg group-hover:scale-110 transition-transform duration-200">🎨</span>
+        </div>
+
+        <!-- Barre de progression compacte -->
+        <div class="relative w-full">
+          <!-- Barre de fond -->
+          <div
+            class="relative bg-white/80 border-2 border-purple-400 rounded-full h-8 overflow-hidden shadow-inner backdrop-blur-sm group-hover:shadow-lg transition-shadow duration-200">
+            <!-- Progress fill -->
+            <div
+              class="absolute inset-0 bg-gradient-to-r from-purple-400 via-pink-400 via-blue-400 to-yellow-400 h-full rounded-full transition-all duration-700 ease-out shadow-sm"
+              style="width: 50%;">
+              <!-- Animated sparkles on progress -->
+              <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-pulse">
+              </div>
+            </div>
+
+            <!-- Texte de progression -->
+            <div class="relative z-10 flex items-center justify-center h-full pr-10">
+              <span class="font-handwriting text-xs text-purple-900 font-bold drop-shadow-sm">50%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bouton Leaderboard -->
+      <div
+        class="flex flex-col items-center transition-all duration-300 hover:scale-105 bg-gradient-to-b from-green-100 to-emerald-200 px-4 py-3 rounded-xl shadow-md hover:shadow-lg border-2 border-green-300/50 group">
+        <div class="flex items-center gap-2 mb-1">
+          <span class="font-handwriting text-emerald-700 text-sm font-bold">Leaderboard</span>
+          <span class="text-sm">🏆</span>
         </div>
         <button
-          id="close-scoreboard"
-          class="mt-4 bg-red-500 text-white rounded-lg px-4 py-2 hover:bg-red-600 transition-colors duration-200"
-        >
-          Close
+          class="bg-gradient-to-br from-emerald-400 to-green-500 shadow-md rounded-xl w-10 h-8 flex items-center justify-center hover:shadow-lg transition-all duration-200 border border-green-600/30 group-hover:scale-110">
+          <span class="material-symbols-outlined text-white text-lg drop-shadow-sm">leaderboard</span>
         </button>
       </div>
     </div>
 
-    <!-- Main content -->
-    <main class="flex flex-1 mx-4 mb-4 mt-2 gap-4">
-      <!-- Zone de dessin -->
-      <section
-        class="flex-1 border-2 rounded-xl bg-white p-4 flex items-center justify-center"
-      >
-        <!-- Canvas ici -->
-        <canvas id="paint-canvas" class="border-2 rounded-xl"></canvas>
+    <!-- Zone de dessin -->
+    <main class="flex mx-3 mb-3 gap-3 flex-1 min-h-0">
+      <section class="flex-1 rounded-xl bg-white p-2 flex items-center justify-center overflow-hidden shadow-lg">
+        <canvas id="paint-canvas" class="border-2 rounded-xl w-full h-full min-w-[400px] min-h-[300px]"></canvas>
       </section>
-      <!-- Barre latérale droite -->
-      <aside
-        class="w-1/4 flex flex-col items-center border-2 rounded-xl bg-white p-4"
-      >
-        <div
-          class="w-full h-1/2 flex items-center justify-center border-2 rounded-xl mb-2"
-        >
-          <img
-            src="pictures/doge.jpg"
-            class="object-contain h-full"
-            alt="Image à reproduire"
-          />
-        </div>
-        <span class="font-handwriting mb-2">Barre d'outils</span>
-        <div class="grid grid-cols-4 grid-rows-2 gap-4">
-          <!-- Outils -->
-          <div class="border-2 rounded-lg w-12 h-12"></div>
-          <div class="border-2 rounded-lg w-12 h-12"></div>
-          <div class="border-2 rounded-lg w-12 h-12"></div>
-          <div class="border-2 rounded-lg w-12 h-12"></div>
-          <div class="border-2 rounded-lg w-12 h-12"></div>
-          <div class="border-2 rounded-lg w-12 h-12"></div>
-          <div class="border-2 rounded-lg w-12 h-12"></div>
-          <div class="border-2 rounded-lg w-12 h-12"></div>
-        </div>
-        <!-- Palette de couleurs -->
-        <span class="font-handwriting my-2">Palette de couleurs</span>
-        <div
-          class="flex flex-row items-center w-full mt-2 gap-4 justify-center"
-        >
-          <!-- Color picker -->
-          <input
-            id="custom-color-picker"
-            type="color"
-            class="w-12 h-12 border-4 border-gray-300 rounded-lg bg-white cursor-pointer"
-            title="Choisir une couleur"
-          />
-          <!-- Palette -->
-          <div class="grid grid-cols-4 grid-rows-3 gap-2">
-            <div
-              class="border-2 rounded-lg w-8 h-8"
-              style="background-color: #000000"
-            ></div>
-            <div
-              class="border-2 rounded-lg w-8 h-8"
-              style="background-color: #808080"
-            ></div>
-            <div
-              class="border-2 rounded-lg w-8 h-8"
-              style="background-color: #a0522d"
-            ></div>
-            <div
-              class="border-2 rounded-lg w-8 h-8"
-              style="background-color: #ff0000"
-            ></div>
-            <div
-              class="border-2 rounded-lg w-8 h-8"
-              style="background-color: #ffa500"
-            ></div>
-            <div
-              class="border-2 rounded-lg w-8 h-8"
-              style="background-color: #ffff00"
-            ></div>
-            <div
-              class="border-2 rounded-lg w-8 h-8"
-              style="background-color: #00ff00"
-            ></div>
-            <div
-              class="border-2 rounded-lg w-8 h-8"
-              style="background-color: #00ffff"
-            ></div>
-            <div
-              class="border-2 rounded-lg w-8 h-8"
-              style="background-color: #0000ff"
-            ></div>
-            <div
-              class="border-2 rounded-lg w-8 h-8"
-              style="background-color: #800080"
-            ></div>
-            <div
-              class="border-2 rounded-lg w-8 h-8"
-              style="background-color: #ffc0cb"
-            ></div>
-            <div
-              class="border-2 rounded-lg w-8 h-8"
-              style="background-color: #ffffff"
-            ></div>
-          </div>
-        </div>
-      </aside>
     </main>
-    <style>
-      .font-handwriting {
-        font-family: "Indie Flower", cursive;
-        font-weight: 700;
-      }
-    </style>
-    <script>
-      let scoreboardModal = document.getElementById("scoreboard-modal");
-      let closeScoreboardBtn = document.getElementById("close-scoreboard");
-      document.querySelector("button").onclick = function () {
-        scoreboardModal.classList.remove("hidden");
-      };
-      closeScoreboardBtn.onclick = function () {
-        scoreboardModal.classList.add("hidden");
-      };
-    </script>
-    <script type="module" src="./script.js"></script>
-  </body>
+  </div>
+
+  <!-- Sidebar droite -->
+  <aside
+    class="w-[400px] flex flex-col rounded-xl bg-white/60 shadow-lg mt-3 mb-3 mr-3 p-4 flex-shrink-0 overflow-hidden">
+    <!-- Image à reproduire -->
+    <div class="w-full flex items-center justify-center border-2 rounded-xl mb-4 h-48 flex-shrink-0">
+      <img src="pictures/doge.jpg" class="object-contain max-w-full max-h-full" alt="Image à reproduire" />
+    </div>
+
+    <!-- Barre d'outils -->
+    <div class="flex-shrink-0 mb-4">
+      <span class="font-handwriting mb-3 block text-center text-lg">Barre d'outils</span>
+      <div class="grid grid-cols-4 grid-rows-2 gap-3 justify-items-center">
+        <!-- Outils -->
+        <div class="border-2 rounded-lg w-10 h-10 hover:bg-gray-100 transition-colors cursor-pointer"></div>
+        <div class="border-2 rounded-lg w-10 h-10 hover:bg-gray-100 transition-colors cursor-pointer"></div>
+        <div class="border-2 rounded-lg w-10 h-10 hover:bg-gray-100 transition-colors cursor-pointer"></div>
+        <div class="border-2 rounded-lg w-10 h-10 hover:bg-gray-100 transition-colors cursor-pointer"></div>
+        <div class="border-2 rounded-lg w-10 h-10 hover:bg-gray-100 transition-colors cursor-pointer"></div>
+        <div class="border-2 rounded-lg w-10 h-10 hover:bg-gray-100 transition-colors cursor-pointer"></div>
+        <div class="border-2 rounded-lg w-10 h-10 hover:bg-gray-100 transition-colors cursor-pointer"></div>
+        <div class="border-2 rounded-lg w-10 h-10 hover:bg-gray-100 transition-colors cursor-pointer"></div>
+      </div>
+    </div>
+
+    <!-- Palette de couleurs -->
+    <div class="flex-1 flex flex-col min-h-0">
+      <span class="font-handwriting mb-3 block text-center text-lg">Palette de couleurs</span>
+      <div class="flex flex-col items-center justify-start flex-1 overflow-y-auto">
+        <!-- Affichage de la couleur sélectionnée -->
+        <div class="flex-shrink-0 mb-4">
+          <div id="selected-color-display" class="w-14 h-14 border-4 border-gray-800 rounded-xl shadow-lg bg-black"
+            title="Couleur actuellement sélectionnée"></div>
+        </div>
+        <!-- Palette -->
+        <div class="grid grid-cols-6 grid-rows-3 gap-3 justify-items-center flex-shrink-0 mb-4">
+          <!-- Rangée 1: Couleurs sombres -->
+          <div
+            class="color-button border-2 border-gray-400 rounded-lg w-12 h-12 cursor-pointer hover:scale-110 transition-transform"
+            style="background-color: #000000" data-color="#000000"></div>
+          <div
+            class="color-button border-2 border-gray-400 rounded-lg w-12 h-12 cursor-pointer hover:scale-110 transition-transform"
+            style="background-color: #4B5563" data-color="#4B5563"></div>
+          <div
+            class="color-button border-2 border-gray-400 rounded-lg w-12 h-12 cursor-pointer hover:scale-110 transition-transform"
+            style="background-color: #7C2D12" data-color="#7C2D12"></div>
+          <div
+            class="color-button border-2 border-gray-400 rounded-lg w-12 h-12 cursor-pointer hover:scale-110 transition-transform"
+            style="background-color: #B91C1C" data-color="#B91C1C"></div>
+          <div
+            class="color-button border-2 border-gray-400 rounded-lg w-12 h-12 cursor-pointer hover:scale-110 transition-transform"
+            style="background-color: #1E40AF" data-color="#1E40AF"></div>
+          <div
+            class="color-button border-2 border-gray-400 rounded-lg w-12 h-12 cursor-pointer hover:scale-110 transition-transform"
+            style="background-color: #581C87" data-color="#581C87"></div>
+
+          <!-- Rangée 2: Couleurs vives -->
+          <div
+            class="color-button border-2 border-gray-400 rounded-lg w-12 h-12 cursor-pointer hover:scale-110 transition-transform"
+            style="background-color: #EF4444" data-color="#EF4444"></div>
+          <div
+            class="color-button border-2 border-gray-400 rounded-lg w-12 h-12 cursor-pointer hover:scale-110 transition-transform"
+            style="background-color: #F97316" data-color="#F97316"></div>
+          <div
+            class="color-button border-2 border-gray-400 rounded-lg w-12 h-12 cursor-pointer hover:scale-110 transition-transform"
+            style="background-color: #EAB308" data-color="#EAB308"></div>
+          <div
+            class="color-button border-2 border-gray-400 rounded-lg w-12 h-12 cursor-pointer hover:scale-110 transition-transform"
+            style="background-color: #22C55E" data-color="#22C55E"></div>
+          <div
+            class="color-button border-2 border-gray-400 rounded-lg w-12 h-12 cursor-pointer hover:scale-110 transition-transform"
+            style="background-color: #06B6D4" data-color="#06B6D4"></div>
+          <div
+            class="color-button border-2 border-gray-400 rounded-lg w-12 h-12 cursor-pointer hover:scale-110 transition-transform"
+            style="background-color: #A855F7" data-color="#A855F7"></div>
+
+          <!-- Rangée 3: Couleurs terre et naturelles -->
+          <div
+            class="color-button border-2 border-gray-400 rounded-lg w-12 h-12 cursor-pointer hover:scale-110 transition-transform"
+            style="background-color: #A0522D" data-color="#A0522D"></div>
+          <div
+            class="color-button border-2 border-gray-400 rounded-lg w-12 h-12 cursor-pointer hover:scale-110 transition-transform"
+            style="background-color: #D2691E" data-color="#D2691E"></div>
+          <div
+            class="color-button border-2 border-gray-400 rounded-lg w-12 h-12 cursor-pointer hover:scale-110 transition-transform"
+            style="background-color: #F5DEB3" data-color="#F5DEB3"></div>
+          <div
+            class="color-button border-2 border-gray-400 rounded-lg w-12 h-12 cursor-pointer hover:scale-110 transition-transform"
+            style="background-color: #D3D3D3" data-color="#D3D3D3"></div>
+          <div
+            class="color-button border-2 border-gray-400 rounded-lg w-12 h-12 cursor-pointer hover:scale-110 transition-transform"
+            style="background-color: #708090" data-color="#708090"></div>
+          <div
+            class="color-button border-2 border-gray-400 rounded-lg w-12 h-12 cursor-pointer hover:scale-110 transition-transform"
+            style="background-color: #FFFFFF" data-color="#FFFFFF"></div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  </main>
+  <script type="module" src="./script.js"></script>
+</body>
+
 </html>
