@@ -74,3 +74,7 @@ header {
     }
   }
 }
+.activeTool {
+  transform: scale(1.2);
+  box-shadow: 0px 0px 10px 3px #ffd500 !important;
+}

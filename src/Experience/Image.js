@@ -3,7 +3,6 @@ import { apiGetImages } from "../Api/apiExemple.js";
 
 export default class Image {
   constructor() {
-    console.log("Image class initialized");
     this.experience = new Experience();
     this.debug = this.experience.debug;
 
@@ -74,17 +73,15 @@ export default class Image {
   async FetchAndSetImage() {
     try {
       const imageData = await apiGetImages(this.randomId);
-      console.log("Réponse API :", imageData);
-
       if (imageData && imageData.link) {
         this.imageLink = imageData.link;
+        this.imageAlt = imageData.alt;
 
         const targetImg = document.getElementById(
           this.parameters.targetElementId
         );
         if (targetImg) {
           targetImg.src = this.imageLink + "?t=" + Date.now();
-          console.log("Image mise à jour :", targetImg.src);
         } else {
           console.warn(
             "Impossible de trouver l'élément :",

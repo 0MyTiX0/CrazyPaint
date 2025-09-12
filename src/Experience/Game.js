@@ -29,8 +29,6 @@ export default class Game {
   }
   startGame() {}
   async submitImage() {
-    this.imageAlt =
-      "it'a picture off a boat on water with 3 people inside, the mast is brown and the sails red";
     const base64 = this.canvasToPreviewAndBase64(this.canvas);
 
     const drawing = this.canvas.toDataURL();
@@ -39,7 +37,7 @@ export default class Game {
     this.canvas.replaceWith(img);
 
     this.scorePopup.style.display = "flex";
-    this.score = await apiSubmitDrawing(base64, this.imageAlt);
+    this.score = await apiSubmitDrawing(base64, this.experience.image.imageAlt);
     this.scoreParsed = JSON.parse(this.score?.message?.content);
 
     this.result.textContent = "Résultat";

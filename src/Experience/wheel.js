@@ -130,12 +130,6 @@ export default class Wheel {
     // Calcul de la rotation totale basée sur la position actuelle
     const totalRotation = this.parameters.currentRotation + newRotation;
 
-    console.log(
-      `🎯 Current rotation: ${this.parameters.currentRotation.toFixed(1)}°`
-    );
-    console.log(`🎯 New rotation to add: ${newRotation.toFixed(1)}°`);
-    console.log(`🎯 Total rotation: ${totalRotation.toFixed(1)}°`);
-
     if (this.wheelElement) {
       this.wheelElement.style.transition = `transform ${this.parameters.spinDuration}ms cubic-bezier(0.25, 0.1, 0.25, 1)`;
       this.wheelElement.style.transform = `rotate(${totalRotation}deg)`;
@@ -143,8 +137,6 @@ export default class Wheel {
 
     setTimeout(() => {
       const finalAngle = totalRotation % 360;
-      console.log(`🎯 Final angle: ${finalAngle.toFixed(1)}°`);
-
       const result = this.calculateResultFromRotation(finalAngle);
       this.showResult(result);
       this.parameters.isSpinning = false;
@@ -171,18 +163,11 @@ export default class Wheel {
     // Calcule où pointe la flèche après rotation de la roue
     const pointerPosition = (360 - wheelRotation) % 360;
 
-    console.log(
-      `🎯 Pointer points to: ${pointerPosition.toFixed(1)}° on original wheel`
-    );
-
     for (let segment of this.segments) {
       if (
         pointerPosition >= segment.startAngle &&
         pointerPosition < segment.endAngle
       ) {
-        console.log(
-          `✅ Selected: ${segment.name} (${segment.startAngle}° - ${segment.endAngle}°)`
-        );
         return segment;
       }
     }
@@ -198,7 +183,5 @@ export default class Wheel {
       }
       this.resultElement.classList.remove("hidden");
     }
-
-    console.log(`🎰 Résultat: ${segment.name}`);
   }
 }

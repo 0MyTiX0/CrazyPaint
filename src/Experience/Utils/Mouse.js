@@ -20,6 +20,16 @@ export default class Mouse extends EventEmitter {
     this.fillButton = document.querySelector(".fill-btn");
     this.eraserButton = document.querySelector(".eraser-btn");
 
+    this.tools = [
+      { element: this.smallPencilButton, key: "smallPencilButton" },
+      { element: this.mediumPencilButton, key: "mediumPencilButton" },
+      { element: this.largePencilButton, key: "largePencilButton" },
+      { element: this.squareButton, key: "squareButton" },
+      { element: this.circleButton, key: "circleButton" },
+      { element: this.fillButton, key: "fillButton" },
+      { element: this.eraserButton, key: "eraserButton" },
+    ];
+
     if (this.debug.active) {
       this.debugFolder = this.debug.ui.addFolder("🖱️ Mouse Event");
       this.debugFolder.close();
@@ -29,6 +39,7 @@ export default class Mouse extends EventEmitter {
     this.setMouseMove();
     this.setMouseUp();
     this.setClick();
+    this.setActiveToolDisplay("mediumPencilButton");
   }
   setDebug() {
     //debug
@@ -107,26 +118,42 @@ export default class Mouse extends EventEmitter {
     this.smallPencilButton.addEventListener("click", () => {
       this.experience.tools.setPencilRadius(10);
       this.experience.paint.parameters.activeTool = "pencil";
+      this.setActiveToolDisplay("smallPencilButton");
     });
     this.mediumPencilButton.addEventListener("click", () => {
       this.experience.tools.setPencilRadius(20);
       this.experience.paint.parameters.activeTool = "pencil";
+      this.setActiveToolDisplay("mediumPencilButton");
     });
     this.largePencilButton.addEventListener("click", () => {
       this.experience.tools.setPencilRadius(30);
       this.experience.paint.parameters.activeTool = "pencil";
+      this.setActiveToolDisplay("largePencilButton");
     });
     this.squareButton.addEventListener("click", () => {
       this.experience.paint.parameters.activeTool = "square";
+      this.setActiveToolDisplay("squareButton");
     });
     this.circleButton.addEventListener("click", () => {
       this.experience.paint.parameters.activeTool = "circle";
+      this.setActiveToolDisplay("circleButton");
     });
     this.fillButton.addEventListener("click", () => {
       this.experience.paint.parameters.activeTool = "fill";
+      this.setActiveToolDisplay("fillButton");
     });
     this.eraserButton.addEventListener("click", () => {
       this.experience.paint.parameters.activeTool = "eraser";
+      this.setActiveToolDisplay("eraserButton");
+    });
+  }
+  setActiveToolDisplay(activeTool) {
+    this.tools.forEach((tool) => {
+      if (tool.key == activeTool) {
+        tool.element.classList.add("activeTool");
+      } else {
+        tool.element.classList.remove("activeTool");
+      }
     });
   }
 }
