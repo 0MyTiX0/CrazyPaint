@@ -1,8 +1,8 @@
 import Time from "./Utils/Time.js";
 import Debug from "./Utils/Debug.js";
 import Paint from "./Paint.js";
-import Mouse from "./Utils/Mouse.js";
 import Tools from "./Tools.js";
+import Mouse from "./Utils/Mouse.js";
 
 let instance = null;
 
@@ -20,7 +20,7 @@ export default class Experience {
     this.debug = new Debug();
     this.paint = new Paint();
     this.tools = new Tools();
-    this.mouse = new Mouse();
+    this.mouse = new Mouse(this);
     this.time = new Time();
 
     this.time.on("tick", () => {
