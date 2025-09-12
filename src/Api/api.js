@@ -26,6 +26,29 @@ class Api {
         return Promise.reject(error);
       }
     );
+    this.axiosInstanceNathan = axios.create({
+      baseURL: `https://nathancampanini2025.alwaysdata.net/Crazypaint/Crazypaint_API`,
+    });
+    this.axiosInstanceNathan.interceptors.request.use(
+      function (config) {
+        config.headers.Authorization = `Bearer ${localStorage.getItem("token")}`;
+        // Do something before request is sent
+        return config;
+      },
+      function (error) {
+        // Do something with request error
+        return Promise.reject(error);
+      }
+    );
+    this.axiosInstanceNathan.interceptors.response.use(
+      function (response) {
+        return response;
+      },
+      function (error) {
+        // Pass error to React Query or any promise-based handler
+        return Promise.reject(error);
+      }
+    );
   }
 }
 export default new Api();

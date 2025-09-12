@@ -4,6 +4,7 @@ import Paint from "./Paint.js";
 import Mouse from "./Utils/Mouse.js";
 import Tools from "./Tools.js";
 import Game from "./Game.js";
+import Image from "./Image.js";
 
 let instance = null;
 
@@ -24,6 +25,7 @@ export default class Experience {
     this.mouse = new Mouse();
     this.time = new Time();
     this.game = new Game();
+    this.image = new Image();
 
     this.time.on("tick", () => {
       this.painting();
