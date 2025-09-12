@@ -18,6 +18,7 @@ export default class Mouse extends EventEmitter {
     this.squareButton = document.querySelector(".square-btn");
     this.circleButton = document.querySelector(".circle-btn");
     this.fillButton = document.querySelector(".fill-btn");
+    this.eraserButton = document.querySelector(".eraser-btn");
 
     if (this.debug.active) {
       this.debugFolder = this.debug.ui.addFolder("🖱️ Mouse Event");
@@ -37,9 +38,12 @@ export default class Mouse extends EventEmitter {
   setMouseDown() {
     this.canvas.addEventListener("mousedown", (event) => {
       this.currentStroke = {};
-      this.currentStroke.color = this.experience.paint.parameters.pencilColor;
       this.currentStroke.time = this.experience.time.elapsed;
       this.currentStroke.tool = this.experience.paint.parameters.activeTool;
+      this.currentStroke.color =
+        this.currentStroke.tool == "eraser"
+          ? "#FFFFFF"
+          : this.experience.paint.parameters.pencilColor;
       this.currentStroke.radius =
         this.currentStroke.tool != "pencil"
           ? 10
@@ -120,6 +124,9 @@ export default class Mouse extends EventEmitter {
     });
     this.fillButton.addEventListener("click", () => {
       this.experience.paint.parameters.activeTool = "fill";
+    });
+    this.eraserButton.addEventListener("click", () => {
+      this.experience.paint.parameters.activeTool = "eraser";
     });
   }
 }

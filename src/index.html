@@ -11,6 +11,7 @@
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
   <link rel="icon" href="pictures/CrazyPaint-favicon.png" type="image/x-icon" />
+  <link rel="stylesheet" href="./style.css" />
   <title>CrazyPaint</title>
 </head>
 
@@ -72,7 +73,7 @@
         </div>
         <button
           class="bg-gradient-to-br from-emerald-400 to-green-500 shadow-md rounded-xl w-10 h-8 flex items-center justify-center hover:shadow-lg transition-all duration-200 border border-green-600/30 group-hover:scale-110">
-          <span class="material-symbols-outlined text-white drop-shadow-sm" style="font-size: 18px;">leaderboard</span>
+          <span class="material-symbols-outlined text-white drop-shadow-sm" style="font-size: 18px">leaderboard</span>
         </button>
       </div>
     </div>
@@ -91,6 +92,9 @@
     <!-- Image à reproduire -->
     <div class="w-full flex items-center justify-center border-2 rounded-xl mb-4 h-48 flex-shrink-0">
       <img src="pictures/doge.jpg" class="object-contain max-w-full max-h-full" alt="Image à reproduire" />
+    </div>
+    <div>
+      <button class="submit-btn">Submit</button>
     </div>
 
     <!-- Barre d'outils -->
@@ -327,6 +331,15 @@
         </div>
       </div>
     </div>
+  </aside>
+  <div class="score-popup">
+    <div class="popup">
+      <div class="result">Résultat en attente</div>
+      <div class="score">Score : / 100</div>
+      <p class="quip"></p>
+      <button class="restart-btn">Rejouer</button>
+    </div>
+  </div>
   </aside>
 
   <!-- Modal de la roue (popup au chargement) -->
