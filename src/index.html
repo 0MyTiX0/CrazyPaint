@@ -19,6 +19,7 @@
       href="pictures/CrazyPaint-favicon.png"
       type="image/x-icon"
     />
+    <link rel="stylesheet" href="./style.css" />
     <title>CrazyPaint</title>
   </head>
 
@@ -147,6 +148,9 @@
           class="object-contain max-w-full max-h-full"
           alt="Image à reproduire"
         />
+      </div>
+      <div>
+        <button class="submit-btn">Submit</button>
       </div>
 
       <!-- Barre d'outils -->
@@ -462,6 +466,14 @@
         </div>
       </div>
     </aside>
+    <div class="score-popup">
+      <div class="popup">
+        <div class="result">Résultat en attente</div>
+        <div class="score">Score : / 100</div>
+        <p class="quip"></p>
+        <button class="restart-btn">Rejouer</button>
+      </div>
+    </div>
 
     <script>
       // Configuration Tailwind pour la font Indie Flower

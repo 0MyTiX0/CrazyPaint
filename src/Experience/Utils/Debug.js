@@ -7,6 +7,7 @@ export default class Debug {
       this.ui = new GUI({
         width: 400,
       });
+      this.ui.close();
     }
   }
 }
