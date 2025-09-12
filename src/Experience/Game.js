@@ -12,6 +12,7 @@ export default class Game {
     this.scoreDisplay = document.querySelector(".score");
     this.result = document.querySelector(".result");
     this.quip = document.querySelector(".quip");
+    this.restartButton = document.querySelector(".restart-btn");
 
     this.parameters = {};
     this.gameStarted = false;
@@ -44,6 +45,11 @@ export default class Game {
     this.result.textContent = "Résultat";
     this.scoreDisplay.textContent = `Score : ${this.scoreParsed?.score} / 100`;
     this.quip.textContent = this.scoreParsed?.quip;
+
+    this.restartButton.style.display = "inline";
+    this.restartButton.addEventListener("click", () => {
+      location.reload();
+    });
   }
 
   canvasToPreviewAndBase64(canvas, maxSide = 1024, quality = 0.6) {

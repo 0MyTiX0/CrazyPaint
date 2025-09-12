@@ -61,5 +61,16 @@ header {
       font-weight: 500;
       font-family: "indie flower";
     }
+    .restart-btn {
+      background-color: rgb(70, 70, 217);
+      color: white;
+      padding: 8px 16px;
+      border-radius: 10px;
+      display: none;
+      transition: transform 300ms ease;
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
   }
 }
