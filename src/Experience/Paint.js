@@ -12,7 +12,7 @@ export default class Paint {
     this.parameters.canvasWidth = window.innerWidth - 460;
     this.parameters.canvasHeight = window.innerHeight - 176;
     this.parameters.backgroundColor = "#b52a2aff";
-    this.parameters.eraseTimer = 4000;
+    this.parameters.eraseTimer = 40000;
     this.parameters.eraseSpeed = 20;
     this.parameters.pencilRadius = 20;
     this.parameters.pencilColor = "#000000";
