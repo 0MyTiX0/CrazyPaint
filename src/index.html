@@ -1,144 +1,94 @@
 <!doctype html>
 <html lang="en" class="size-full">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
-    />
-    <link
-      rel="icon"
-      href="pictures/CrazyPaint-favicon.png"
-      type="image/x-icon"
-    />
-    <title>CrazyPaint</title>
-  </head>
 
-  <body
-    class="h-screen flex overflow-hidden bg-gradient-to-br from-yellow-400 via-pink-400 via-green-300 to-blue-400"
-  >
-    <!-- Zone principale (Header + Canvas) -->
-    <div class="flex flex-col flex-1">
-      <!-- Header -->
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <link rel="icon" href="pictures/CrazyPaint-favicon.png" type="image/x-icon" />
+  <link rel="stylesheet" href="./style.css" />
+  <title>CrazyPaint</title>
+</head>
+
+<body class="h-screen flex overflow-hidden bg-gradient-to-br from-yellow-400 via-pink-400 via-green-300 to-blue-400">
+  <!-- Zone principale (Header + Canvas) -->
+  <div class="flex flex-col flex-1">
+    <!-- Header -->
+    <div
+      class="flex items-center justify-between rounded-xl p-4 m-3 h-[120px] bg-white/80 shadow-lg backdrop-blur-sm border border-white/30">
+      <!-- Logo et titre -->
       <div
-        class="flex items-center justify-between rounded-xl p-4 m-3 h-[120px] bg-white/80 shadow-lg backdrop-blur-sm border border-white/30"
-      >
-        <!-- Logo et titre -->
-        <div
-          class="flex items-center gap-4 transition-all duration-300 hover:scale-105 bg-gradient-to-r from-purple-200 to-pink-200 px-4 py-3 rounded-xl shadow-md hover:shadow-lg border-2 border-purple-300/50 group"
-        >
-          <div
-            class="relative group-hover:scale-110 transition-transform duration-200"
-          >
-            <img
-              src="pictures/CrazyPaint-favicon.png"
-              class="w-12 h-12 drop-shadow-lg"
-              alt="Logo"
-            />
-            <div
-              class="absolute -top-1 -right-1 w-4 h-4 bg-yellow-400 rounded-full animate-pulse"
-            ></div>
-          </div>
-          <div class="flex flex-col">
-            <span
-              class="font-handwriting text-2xl font-bold text-purple-800 drop-shadow-sm"
-              >Crazy Paint</span
-            >
-            <span class="font-handwriting text-xs text-purple-600"
-              >Art & Fun</span
-            >
-          </div>
+        class="flex items-center gap-4 transition-all duration-300 hover:scale-105 bg-gradient-to-r from-purple-200 to-pink-200 px-4 py-3 rounded-xl shadow-md hover:shadow-lg border-2 border-purple-300/50 group">
+        <div class="relative group-hover:scale-110 transition-transform duration-200">
+          <img src="pictures/CrazyPaint-favicon.png" class="w-12 h-12 drop-shadow-lg" alt="Logo" />
+          <div class="absolute -top-1 -right-1 w-4 h-4 bg-yellow-400 rounded-full animate-pulse"></div>
         </div>
-
-        <!-- Barre de progression intégrée -->
-        <div
-          class="flex flex-col justify-center h-[80px] flex-1 mx-8 transition-all duration-300 hover:scale-105 bg-gradient-to-b from-blue-100 to-purple-100 px-6 py-2 rounded-xl shadow-md hover:shadow-lg border-2 border-blue-300/50 group"
-        >
-          <div class="flex items-center justify-center gap-2 mb-1">
-            <span class="font-handwriting text-base font-bold text-purple-700"
-              >Barre De Crazyness</span
-            >
-            <span
-              class="text-lg group-hover:scale-110 transition-transform duration-200"
-              >🎨</span
-            >
-          </div>
-
-          <!-- Barre de progression compacte -->
-          <div class="relative w-full">
-            <!-- Barre de fond -->
-            <div
-              class="relative bg-white/80 border-2 border-purple-400 rounded-full h-8 overflow-hidden shadow-inner backdrop-blur-sm group-hover:shadow-lg transition-shadow duration-200"
-            >
-              <!-- Progress fill -->
-              <div
-                class="absolute inset-0 bg-gradient-to-r from-purple-400 via-pink-400 via-blue-400 to-yellow-400 h-full rounded-full transition-all duration-700 ease-out shadow-sm"
-                style="width: 50%"
-              >
-                <!-- Animated sparkles on progress -->
-                <div
-                  class="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-pulse"
-                ></div>
-              </div>
-
-              <!-- Texte de progression -->
-              <div
-                class="relative z-10 flex items-center justify-center h-full pr-10"
-              >
-                <span
-                  class="font-handwriting text-xs text-purple-900 font-bold drop-shadow-sm"
-                  >50%</span
-                >
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Bouton Leaderboard -->
-        <div
-          class="flex flex-col items-center transition-all duration-300 hover:scale-105 bg-gradient-to-b from-green-100 to-emerald-200 px-4 py-3 rounded-xl shadow-md hover:shadow-lg border-2 border-green-300/50 group"
-        >
-          <div class="flex items-center gap-2 mb-1">
-            <span class="font-handwriting text-emerald-700 text-sm font-bold"
-              >Leaderboard</span
-            >
-            <span class="text-sm">🏆</span>
-          </div>
-          <button
-            class="bg-gradient-to-br from-emerald-400 to-green-500 shadow-md rounded-xl w-10 h-8 flex items-center justify-center hover:shadow-lg transition-all duration-200 border border-green-600/30 group-hover:scale-110"
-          >
-            <span
-              class="material-symbols-outlined text-white drop-shadow-sm"
-              style="font-size: 18px"
-              >leaderboard</span
-            >
-          </button>
+        <div class="flex flex-col">
+          <span class="font-handwriting text-2xl font-bold text-purple-800 drop-shadow-sm">Crazy Paint</span>
+          <span class="font-handwriting text-xs text-purple-600">Art & Fun</span>
         </div>
       </div>
 
-      <!-- Zone de dessin -->
-      <main class="flex mx-3 mb-3 gap-3 flex-1 min-h-0">
-        <section
-          class="flex-1 rounded-xl bg-white p-2 flex items-center justify-center overflow-hidden shadow-lg"
-        >
-          <canvas id="paint-canvas" class="border-2 rounded-xl"></canvas>
-        </section>
-      </main>
+      <!-- Barre de progression intégrée -->
+      <div
+        class="flex flex-col justify-center h-[80px] flex-1 mx-8 transition-all duration-300 hover:scale-105 bg-gradient-to-b from-blue-100 to-purple-100 px-6 py-2 rounded-xl shadow-md hover:shadow-lg border-2 border-blue-300/50 group">
+        <div class="flex items-center justify-center gap-2 mb-1">
+          <span class="font-handwriting text-base font-bold text-purple-700">Barre De Crazyness</span>
+          <span class="text-lg group-hover:scale-110 transition-transform duration-200">🎨</span>
+        </div>
+
+        <!-- Barre de progression compacte -->
+        <div class="relative w-full">
+          <!-- Barre de fond -->
+          <div
+            class="relative bg-white/80 border-2 border-purple-400 rounded-full h-8 overflow-hidden shadow-inner backdrop-blur-sm group-hover:shadow-lg transition-shadow duration-200">
+            <!-- Progress fill -->
+            <div
+              class="absolute inset-0 bg-gradient-to-r from-purple-400 via-pink-400 via-blue-400 to-yellow-400 h-full rounded-full transition-all duration-700 ease-out shadow-sm"
+              style="width: 50%">
+              <!-- Animated sparkles on progress -->
+              <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-pulse">
+              </div>
+            </div>
+
+            <!-- Texte de progression -->
+            <div class="relative z-10 flex items-center justify-center h-full pr-10">
+              <span class="font-handwriting text-xs text-purple-900 font-bold drop-shadow-sm">50%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bouton Leaderboard -->
+      <div
+        class="flex flex-col items-center transition-all duration-300 hover:scale-105 bg-gradient-to-b from-green-100 to-emerald-200 px-4 py-3 rounded-xl shadow-md hover:shadow-lg border-2 border-green-300/50 group">
+        <div class="flex items-center gap-2 mb-1">
+          <span class="font-handwriting text-emerald-700 text-sm font-bold">Leaderboard</span>
+          <span class="text-sm">🏆</span>
+        </div>
+        <button
+          class="bg-gradient-to-br from-emerald-400 to-green-500 shadow-md rounded-xl w-10 h-8 flex items-center justify-center hover:shadow-lg transition-all duration-200 border border-green-600/30 group-hover:scale-110">
+          <span class="material-symbols-outlined text-white drop-shadow-sm" style="font-size: 18px">leaderboard</span>
+        </button>
+      </div>
     </div>
 
-    <!-- Sidebar droite -->
+    <!-- Zone de dessin -->
+    <main class="flex mx-3 mb-3 gap-3 flex-1 min-h-0">
+      <section class="flex-1 rounded-xl bg-white p-2 flex items-center justify-center overflow-hidden shadow-lg">
+        <canvas id="paint-canvas" class="border-2 rounded-xl"></canvas>
+      </section>
+    </main>
+  </div>
+
     <aside
       class="w-[400px] flex flex-col rounded-xl bg-white/60 shadow-lg mt-3 mb-3 mr-3 p-4 flex-shrink-0 overflow-hidden"
     >
-      <!-- Image à reproduire -->
       <div
         class="w-full flex items-center justify-center border-2 rounded-xl mb-4 h-48 flex-shrink-0"
       >
@@ -148,333 +98,518 @@
           alt="Image à reproduire"
         />
       </div>
+      <div>
+        <button class="submit-btn">Submit</button>
+      </div>
 
-      <!-- Barre d'outils -->
-      <div class="flex-shrink-0 mb-4">
-        <div class="flex items-center justify-center gap-2 mb-3">
-          <span class="font-handwriting text-lg font-bold text-purple-700"
-            >Barre d'outils</span
-          >
-          <span class="text-lg">🛠️</span>
+    <!-- Barre d'outils -->
+    <div class="flex-shrink-0 mb-4">
+      <div class="flex items-center justify-center gap-2 mb-3">
+        <span class="font-handwriting text-lg font-bold text-purple-700">Barre d'outils</span>
+        <span class="text-lg">🛠️</span>
+      </div>
+      <div class="grid grid-cols-4 grid-rows-2 gap-3 justify-items-center">
+        <!-- Brush Fin -->
+        <div
+          class="small-pencil-btn group relative border-4 border-blue-300 rounded-xl w-12 h-12 hover:border-blue-500 hover:bg-blue-50 transition-all duration-200 cursor-pointer flex items-center justify-center shadow-sm hover:shadow-md"
+          title="Brush Fin">
+          <span class="material-symbols-outlined text-blue-600 group-hover:scale-110 transition-transform"
+            style="font-size: 16px">brush</span>
+          <div
+            class="absolute -bottom-1 -right-1 bg-blue-500 text-white rounded-full w-4 h-4 flex items-center justify-center text-xs font-bold">
+            S
+          </div>
         </div>
-        <div class="grid grid-cols-4 grid-rows-2 gap-3 justify-items-center">
-          <!-- Brush Fin -->
-          <div
-            class="small-pencil-btn group relative border-4 border-blue-300 rounded-xl w-12 h-12 hover:border-blue-500 hover:bg-blue-50 transition-all duration-200 cursor-pointer flex items-center justify-center shadow-sm hover:shadow-md"
-            title="Brush Fin"
-          >
-            <span
-              class="material-symbols-outlined text-blue-600 group-hover:scale-110 transition-transform"
-              style="font-size: 16px"
-              >brush</span
-            >
-            <div
-              class="absolute -bottom-1 -right-1 bg-blue-500 text-white rounded-full w-4 h-4 flex items-center justify-center text-xs font-bold"
-            >
-              S
-            </div>
-          </div>
 
-          <!-- Brush Moyen -->
+        <!-- Brush Moyen -->
+        <div
+          class="medium-pencil-btn group relative border-4 border-green-300 rounded-xl w-12 h-12 hover:border-green-500 hover:bg-green-50 transition-all duration-200 cursor-pointer flex items-center justify-center shadow-sm hover:shadow-md"
+          title="Brush Moyen">
+          <span class="material-symbols-outlined text-green-600 group-hover:scale-110 transition-transform"
+            style="font-size: 20px; font-weight: 500">brush</span>
           <div
-            class="medium-pencil-btn group relative border-4 border-green-300 rounded-xl w-12 h-12 hover:border-green-500 hover:bg-green-50 transition-all duration-200 cursor-pointer flex items-center justify-center shadow-sm hover:shadow-md"
-            title="Brush Moyen"
-          >
-            <span
-              class="material-symbols-outlined text-green-600 group-hover:scale-110 transition-transform"
-              style="font-size: 20px; font-weight: 500"
-              >brush</span
-            >
-            <div
-              class="absolute -bottom-1 -right-1 bg-green-500 text-white rounded-full w-4 h-4 flex items-center justify-center text-xs font-bold"
-            >
-              M
-            </div>
+            class="absolute -bottom-1 -right-1 bg-green-500 text-white rounded-full w-4 h-4 flex items-center justify-center text-xs font-bold">
+            M
           </div>
+        </div>
 
-          <!-- Brush Large -->
+        <!-- Brush Large -->
+        <div
+          class="large-pencil-btn group relative border-4 border-orange-300 rounded-xl w-12 h-12 hover:border-orange-500 hover:bg-orange-50 transition-all duration-200 cursor-pointer flex items-center justify-center shadow-sm hover:shadow-md"
+          title="Brush Large">
+          <span class="material-symbols-outlined text-orange-600 group-hover:scale-110 transition-transform"
+            style="font-size: 24px; font-weight: 700">brush</span>
           <div
-            class="large-pencil-btn group relative border-4 border-orange-300 rounded-xl w-12 h-12 hover:border-orange-500 hover:bg-orange-50 transition-all duration-200 cursor-pointer flex items-center justify-center shadow-sm hover:shadow-md"
-            title="Brush Large"
-          >
-            <span
-              class="material-symbols-outlined text-orange-600 group-hover:scale-110 transition-transform"
-              style="font-size: 24px; font-weight: 700"
-              >brush</span
-            >
-            <div
-              class="absolute -bottom-1 -right-1 bg-orange-500 text-white rounded-full w-4 h-4 flex items-center justify-center text-xs font-bold"
-            >
-              L
-            </div>
+            class="absolute -bottom-1 -right-1 bg-orange-500 text-white rounded-full w-4 h-4 flex items-center justify-center text-xs font-bold">
+            L
           </div>
+        </div>
 
-          <!-- Effaceur -->
-          <div
-            class="clear-btn group border-4 border-red-300 rounded-xl w-12 h-12 hover:border-red-500 hover:bg-red-50 transition-all duration-200 cursor-pointer flex items-center justify-center shadow-sm hover:shadow-md"
-            title="Gomme"
-          >
-            <span
-              class="material-symbols-outlined text-red-600 group-hover:scale-110 transition-transform"
-              >delete_forever</span
-            >
-          </div>
+        <!-- Effaceur -->
+        <div
+          class="clear-btn group border-4 border-red-300 rounded-xl w-12 h-12 hover:border-red-500 hover:bg-red-50 transition-all duration-200 cursor-pointer flex items-center justify-center shadow-sm hover:shadow-md"
+          title="Gomme">
+          <span
+            class="material-symbols-outlined text-red-600 group-hover:scale-110 transition-transform">delete_forever</span>
+        </div>
 
-          <!-- Gomme -->
-          <div
-            class="eraser-btn group border-4 border-purple-400 rounded-xl w-12 h-12 hover:border-purple-500 hover:bg-purple-50 transition-all duration-200 cursor-pointer flex items-center justify-center shadow-sm hover:shadow-md"
-            title="Effaceur"
-          >
-            <span
-              class="material-symbols-outlined text-purple-600 group-hover:scale-110 transition-transform"
-              >ink_eraser</span
-            >
-          </div>
+        <!-- Gomme -->
+        <div
+          class="eraser-btn group border-4 border-purple-400 rounded-xl w-12 h-12 hover:border-purple-500 hover:bg-purple-50 transition-all duration-200 cursor-pointer flex items-center justify-center shadow-sm hover:shadow-md"
+          title="Effaceur">
+          <span
+            class="material-symbols-outlined text-purple-600 group-hover:scale-110 transition-transform">ink_eraser</span>
+        </div>
 
-          <!-- Carré -->
-          <div
-            class="square-btn group border-4 border-indigo-300 rounded-xl w-12 h-12 hover:border-indigo-500 hover:bg-indigo-50 transition-all duration-200 cursor-pointer flex items-center justify-center shadow-sm hover:shadow-md"
-            title="Forme Carré"
-          >
-            <span
-              class="material-symbols-outlined text-indigo-600 group-hover:scale-110 transition-transform"
-              >square</span
-            >
-          </div>
+        <!-- Carré -->
+        <div
+          class="square-btn group border-4 border-indigo-300 rounded-xl w-12 h-12 hover:border-indigo-500 hover:bg-indigo-50 transition-all duration-200 cursor-pointer flex items-center justify-center shadow-sm hover:shadow-md"
+          title="Forme Carré">
+          <span
+            class="material-symbols-outlined text-indigo-600 group-hover:scale-110 transition-transform">square</span>
+        </div>
 
-          <!-- Cercle -->
-          <div
-            class="circle-btn group border-4 border-pink-300 rounded-xl w-12 h-12 hover:border-pink-500 hover:bg-pink-50 transition-all duration-200 cursor-pointer flex items-center justify-center shadow-sm hover:shadow-md"
-            title="Forme Cercle"
-          >
-            <span
-              class="material-symbols-outlined text-pink-600 group-hover:scale-110 transition-transform"
-              >circle</span
-            >
-          </div>
+        <!-- Cercle -->
+        <div
+          class="circle-btn group border-4 border-pink-300 rounded-xl w-12 h-12 hover:border-pink-500 hover:bg-pink-50 transition-all duration-200 cursor-pointer flex items-center justify-center shadow-sm hover:shadow-md"
+          title="Forme Cercle">
+          <span class="material-symbols-outlined text-pink-600 group-hover:scale-110 transition-transform">circle</span>
+        </div>
 
-          <!-- Fill -->
-          <div
-            class="fill-btn group border-4 border-cyan-300 rounded-xl w-12 h-12 hover:border-cyan-500 hover:bg-cyan-50 transition-all duration-200 cursor-pointer flex items-center justify-center shadow-sm hover:shadow-md"
-            title="Palette de couleurs"
-          >
-            <span
-              class="material-symbols-outlined text-cyan-600 group-hover:scale-110 transition-transform"
-              >colors</span
-            >
+        <!-- Fill -->
+        <div
+          class="fill-btn group border-4 border-cyan-300 rounded-xl w-12 h-12 hover:border-cyan-500 hover:bg-cyan-50 transition-all duration-200 cursor-pointer flex items-center justify-center shadow-sm hover:shadow-md"
+          title="Palette de couleurs">
+          <span class="material-symbols-outlined text-cyan-600 group-hover:scale-110 transition-transform">colors</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Palette de couleurs -->
+    <div class="flex-1 flex flex-col min-h-0">
+      <div class="flex items-center justify-center gap-2 mb-3">
+        <span class="font-handwriting text-lg font-bold text-purple-700">Palette de couleurs</span>
+        <span class="text-lg">🎨</span>
+      </div>
+      <div class="flex flex-col items-center justify-start flex-1 overflow-y-auto">
+        <!-- Affichage de la couleur sélectionnée -->
+        <div class="flex-shrink-0 mb-4">
+          <div class="relative">
+            <div id="selected-color-display" class="color-display w-16 h-16 rounded-2xl shadow-xl"
+              title="Couleur actuellement sélectionnée"></div>
           </div>
         </div>
       </div>
-
-      <!-- Palette de couleurs -->
-      <div class="flex-1 flex flex-col min-h-0">
-        <div class="flex items-center justify-center gap-2 mb-3">
-          <span class="font-handwriting text-lg font-bold text-purple-700"
-            >Palette de couleurs</span
-          >
-          <span class="text-lg">🎨</span>
+      <!-- Palette -->
+      <div
+        class="grid grid-cols-6 grid-rows-3 gap-2 justify-items-center flex-shrink-0 mb-4 p-3 bg-white/20 rounded-2xl backdrop-blur-sm border border-white/30">
+        <!-- Rangée 1: Couleurs sombres -->
+        <div
+          class="color-button group relative border-gray-300 rounded-xl w-10 h-10 cursor-pointer hover:scale-125 transition-all duration-200 shadow-md hover:shadow-lg overflow-hidden"
+          style="background-color: #000000" data-color="#000000">
+          <div
+            class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+          </div>
         </div>
         <div
-          class="flex flex-col items-center justify-start flex-1 overflow-y-auto"
-        >
-          <!-- Affichage de la couleur sélectionnée -->
-          <div class="flex-shrink-0 mb-4">
-            <div class="relative">
+          class="color-button group relative border-gray-300 rounded-xl w-10 h-10 cursor-pointer hover:scale-125 transition-all duration-200 shadow-md hover:shadow-lg overflow-hidden"
+          style="background-color: #4b5563" data-color="#4B5563">
+          <div
+            class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+          </div>
+        </div>
+        <div
+          class="color-button group relative border-gray-300 rounded-xl w-10 h-10 cursor-pointer hover:scale-125 transition-all duration-200 shadow-md hover:shadow-lg overflow-hidden"
+          style="background-color: #7c2d12" data-color="#7C2D12">
+          <div
+            class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+          </div>
+        </div>
+        <div
+          class="color-button group relativ border-gray-300 rounded-xl w-10 h-10 cursor-pointer hover:scale-125 transition-all duration-200 shadow-md hover:shadow-lg overflow-hidden"
+          style="background-color: #b91c1c" data-color="#B91C1C">
+          <div
+            class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+          </div>
+        </div>
+        <div
+          class="color-button group relative border-gray-300 rounded-xl w-10 h-10 cursor-pointer hover:scale-125 transition-all duration-200 shadow-md hover:shadow-lg overflow-hidden"
+          style="background-color: #1e40af" data-color="#1E40AF">
+          <div
+            class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+          </div>
+        </div>
+        <div
+          class="color-button group relative border-gray-300 rounded-xl w-10 h-10 cursor-pointer hover:scale-125 transition-all duration-200 shadow-md hover:shadow-lg overflow-hidden"
+          style="background-color: #581c87" data-color="#581C87">
+          <div
+            class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+          </div>
+        </div>
+
+        <!-- Rangée 2: Couleurs vives -->
+        <div
+          class="color-button group relative border-gray-300 rounded-xl w-10 h-10 cursor-pointer hover:scale-125 transition-all duration-200 shadow-md hover:shadow-lg overflow-hidden"
+          style="background-color: #ef4444" data-color="#EF4444">
+          <div
+            class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+          </div>
+        </div>
+        <div
+          class="color-button group relative border-gray-300 rounded-xl w-10 h-10 cursor-pointer hover:scale-125 transition-all duration-200 shadow-md hover:shadow-lg overflow-hidden"
+          style="background-color: #f97316" data-color="#F97316">
+          <div
+            class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+          </div>
+        </div>
+        <div
+          class="color-button group relative border-gray-300 rounded-xl w-10 h-10 cursor-pointer hover:scale-125 transition-all duration-200 shadow-md hover:shadow-lg overflow-hidden"
+          style="background-color: #eab308" data-color="#EAB308">
+          <div
+            class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+          </div>
+        </div>
+        <div
+          class="color-button group relative border-gray-300 rounded-xl w-10 h-10 cursor-pointer hover:scale-125 transition-all duration-200 shadow-md hover:shadow-lg overflow-hidden"
+          style="background-color: #22c55e" data-color="#22C55E">
+          <div
+            class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+          </div>
+        </div>
+        <div
+          class="color-button group relative border-gray-300 rounded-xl w-10 h-10 cursor-pointer hover:scale-125 transition-all duration-200 shadow-md hover:shadow-lg overflow-hidden"
+          style="background-color: #06b6d4" data-color="#06B6D4">
+          <div
+            class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+          </div>
+        </div>
+        <div
+          class="color-button group relative border-gray-300 rounded-xl w-10 h-10 cursor-pointer hover:scale-125 transition-all duration-200 shadow-md hover:shadow-lg overflow-hidden"
+          style="background-color: #a855f7" data-color="#A855F7">
+          <div
+            class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+          </div>
+        </div>
+
+        <!-- Rangée 3: Couleurs terre et naturelles -->
+        <div
+          class="color-button group relative border-gray-300 rounded-xl w-10 h-10 cursor-pointer hover:scale-125 transition-all duration-200 shadow-md hover:shadow-lg overflow-hidden"
+          style="background-color: #a0522d" data-color="#A0522D">
+          <div
+            class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+          </div>
+        </div>
+        <div
+          class="color-button group relative border-gray-300 rounded-xl w-10 h-10 cursor-pointer hover:scale-125 transition-all duration-200 shadow-md hover:shadow-lg overflow-hidden"
+          style="background-color: #d2691e" data-color="#D2691E">
+          <div
+            class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+          </div>
+        </div>
+        <div
+          class="color-button group relative border-gray-300 rounded-xl w-10 h-10 cursor-pointer hover:scale-125 transition-all duration-200 shadow-md hover:shadow-lg overflow-hidden"
+          style="background-color: #f5deb3" data-color="#F5DEB3">
+          <div
+            class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+          </div>
+        </div>
+        <div
+          class="color-button group relative border-4 border-gray-300 rounded-xl w-10 h-10 cursor-pointer hover:scale-125 transition-all duration-200 shadow-md hover:shadow-lg overflow-hidden"
+          style="background-color: #d3d3d3" data-color="#D3D3D3">
+          <div
+            class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+          </div>
+        </div>
+        <div
+          class="color-button group relative border-gray-300 rounded-xl w-10 h-10 cursor-pointer hover:scale-125 transition-all duration-200 shadow-md hover:shadow-lg overflow-hidden"
+          style="background-color: #708090" data-color="#708090">
+          <div
+            class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+          </div>
+        </div>
+        <div
+          class="color-button group relative border-gray-300 rounded-xl w-10 h-10 cursor-pointer hover:scale-125 transition-all duration-200 shadow-md hover:shadow-lg overflow-hidden"
+          style="background-color: #ffffff" data-color="#FFFFFF">
+          <div
+            class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="score-popup">
+    <div class="popup">
+      <div class="result">Résultat en attente</div>
+      <div class="score">Score : / 100</div>
+      <p class="quip"></p>
+      <button class="restart-btn">Rejouer</button>
+    </div>
+  </div>
+  </aside>
+
+  <!-- Modal de la roue (popup au chargement) -->
+  <div id="wheelModal" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center hidden">
+    <div
+      class="bg-gradient-to-br from-yellow-400 via-pink-400 via-green-300 to-blue-400 rounded-3xl p-8 max-w-2xl mx-4 relative animate-scaleIn">
+      <!-- Bouton fermer (optionnel) -->
+      <button id="closeModal"
+        class="absolute top-4 right-4 text-white hover:text-gray-300 text-2xl font-bold z-10">×</button>
+
+      <!-- Contenu de la roue -->
+      <div class="flex-1 flex items-center justify-center">
+        <div
+          class="w-[500px] h-[600px] bg-white/50 rounded-3xl shadow-2xl backdrop-blur-sm border-4 border-white/30 p-6 flex flex-col justify-evenly items-center">
+          <h1 class="font-handwriting text-4xl font-bold text-center text-white drop-shadow-lg">Crazy Wheel</h1>
+
+          <div class="relative">
+            <!-- Flèche pointeur -->
+            <div class="absolute -top-8 left-1/2 transform -translate-x-1/2 z-30">
+              <div class="relative">
+                <div
+                  class="absolute top-1 left-1 w-0 h-0 border-l-8 border-r-8 border-b-16 border-l-transparent border-r-transparent border-b-black/20">
+                </div>
+                <div
+                  class="w-0 h-0 border-l-8 border-r-8 border-b-16 border-l-transparent border-r-transparent border-b-red-600 drop-shadow-xl">
+                </div>
+                <div
+                  class="absolute -top-1 left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-b-10 border-l-transparent border-r-transparent border-b-red-400">
+                </div>
+                <div
+                  class="absolute top-4 left-1/2 transform -translate-x-1/2 w-3 h-3 bg-white rounded-full border-2 border-red-600">
+                </div>
+              </div>
+            </div>
+
+            <div id="wheel" class="w-96 h-96 rounded-full relative overflow-hidden border-8 border-white shadow-2xl">
+              <svg class="w-full h-full drop-shadow-lg" viewBox="0 0 200 200">
+                <defs>
+                  <radialGradient id="redGradient" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" style="stop-color:#fca5a5;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#ef4444;stop-opacity:1" />
+                  </radialGradient>
+                  <radialGradient id="blueGradient" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" style="stop-color:#93c5fd;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#3b82f6;stop-opacity:1" />
+                  </radialGradient>
+                  <radialGradient id="greenGradient" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" style="stop-color:#86efac;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#22c55e;stop-opacity:1" />
+                  </radialGradient>
+                  <radialGradient id="yellowGradient" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" style="stop-color:#fde047;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#eab308;stop-opacity:1" />
+                  </radialGradient>
+                  <radialGradient id="purpleGradient" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" style="stop-color:#c4b5fd;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#a855f7;stop-opacity:1" />
+                  </radialGradient>
+                  <radialGradient id="pinkGradient" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" style="stop-color:#f9a8d4;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#ec4899;stop-opacity:1" />
+                  </radialGradient>
+                  <radialGradient id="orangeGradient" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" style="stop-color:#fdba74;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#f97316;stop-opacity:1" />
+                  </radialGradient>
+                  <radialGradient id="tealGradient" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" style="stop-color:#5eead4;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#14b8a6;stop-opacity:1" />
+                  </radialGradient>
+                </defs>
+
+                <path d="M 100,100 L 100,0 A 100,100 0 0,1 170.71,29.29 z" fill="url(#redGradient)" stroke="white"
+                  stroke-width="3" />
+                <path d="M 100,100 L 170.71,29.29 A 100,100 0 0,1 200,100 z" fill="url(#blueGradient)" stroke="white"
+                  stroke-width="3" />
+                <path d="M 100,100 L 200,100 A 100,100 0 0,1 170.71,170.71 z" fill="url(#greenGradient)" stroke="white"
+                  stroke-width="3" />
+                <path d="M 100,100 L 170.71,170.71 A 100,100 0 0,1 100,200 z" fill="url(#yellowGradient)" stroke="white"
+                  stroke-width="3" />
+                <path d="M 100,100 L 100,200 A 100,100 0 0,1 29.29,170.71 z" fill="url(#purpleGradient)" stroke="white"
+                  stroke-width="3" />
+                <path d="M 100,100 L 29.29,170.71 A 100,100 0 0,1 0,100 z" fill="url(#pinkGradient)" stroke="white"
+                  stroke-width="3" />
+                <path d="M 100,100 L 0,100 A 100,100 0 0,1 29.29,29.29 z" fill="url(#orangeGradient)" stroke="white"
+                  stroke-width="3" />
+                <path d="M 100,100 L 29.29,29.29 A 100,100 0 0,1 100,0 z" fill="url(#tealGradient)" stroke="white"
+                  stroke-width="3" />
+              </svg>
+
+              <!-- Textes des segments -->
+              <div class="absolute inset-0">
+                <div class="absolute top-[15%] left-[65%] transform -translate-x-1/2 -translate-y-1/2">
+                  <span
+                    class="text-white font-bold text-xs text-center drop-shadow-lg block leading-tight rotate-[22.5deg]">⏱️​<br>Buffer<br>Effacement<br>-10
+                    sec</span>
+                </div>
+                <div class="absolute top-[35%] left-[85%] transform -translate-x-1/2 -translate-y-1/2">
+                  <span
+                    class="text-white font-bold text-xs text-center drop-shadow-lg block leading-tight rotate-[67.5deg]">​⚡​<br>Vitesse<br>Effacement<br>X3</span>
+                </div>
+                <div class="absolute top-[65%] left-[85%] transform -translate-x-1/2 -translate-y-1/2">
+                  <span
+                    class="text-white font-bold text-xs text-center drop-shadow-lg block leading-tight rotate-[112.5deg]">️🧰<br>Outils<br>Aléatoires</span>
+                </div>
+                <div class="absolute top-[85%] left-[65%] transform -translate-x-1/2 -translate-y-1/2">
+                  <span
+                    class="text-white font-bold text-xs text-center drop-shadow-lg block leading-tight rotate-[157.5deg]">💨<br>Outils<br>Qui<br>Fuient</span>
+                </div>
+                <div class="absolute top-[85%] left-[35%] transform -translate-x-1/2 -translate-y-1/2">
+                  <span
+                    class="text-white font-bold text-xs text-center drop-shadow-lg block leading-tight rotate-[202.5deg]">⏱️​<br>Buffer<br>Effacement<br>-15
+                    sec</span>
+                </div>
+                <div class="absolute top-[65%] left-[15%] transform -translate-x-1/2 -translate-y-1/2">
+                  <span
+                    class="text-white font-bold text-xs text-center drop-shadow-lg block leading-tight rotate-[247.5deg]">​⚡​<br>Vitesse<br>Effacement<br>X2</span>
+                </div>
+                <div class="absolute top-[35%] left-[15%] transform -translate-x-1/2 -translate-y-1/2">
+                  <span
+                    class="text-white font-bold text-xs text-center drop-shadow-lg block leading-tight rotate-[292.5deg]">​💣​​<br>De
+                    moins<br>En Moins<br>D'outils</span>
+                </div>
+                <div class="absolute top-[15%] left-[35%] transform -translate-x-1/2 -translate-y-1/2">
+                  <span
+                    class="text-white font-bold text-xs text-center drop-shadow-lg block leading-tight rotate-[337.5deg]">🖼️<br>Image<br>Difficile</span>
+                </div>
+              </div>
+
               <div
-                id="selected-color-display"
-                class="color-display w-16 h-16 rounded-2xl shadow-xl"
-                title="Couleur actuellement sélectionnée"
-              ></div>
+                class="absolute inset-0 rounded-full bg-gradient-to-br from-white/20 via-transparent to-transparent pointer-events-none">
+              </div>
+
+              <!-- Centre de la roue -->
+              <div
+                class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-20 h-20 bg-gradient-to-b from-gray-100 to-gray-300 rounded-full shadow-xl border-4 border-white flex items-center justify-center z-10">
+                <div class="w-8 h-8 bg-gradient-to-b from-gray-600 to-gray-800 rounded-full shadow-inner"></div>
+              </div>
             </div>
           </div>
         </div>
-        <!-- Palette -->
-        <div
-          class="grid grid-cols-6 grid-rows-3 gap-2 justify-items-center flex-shrink-0 mb-4 p-3 bg-white/20 rounded-2xl backdrop-blur-sm border border-white/30"
-        >
-          <!-- Rangée 1: Couleurs sombres -->
-          <div
-            class="color-button group relative border-gray-300 rounded-xl w-10 h-10 cursor-pointer hover:scale-125 transition-all duration-200 shadow-md hover:shadow-lg overflow-hidden"
-            style="background-color: #000000"
-            data-color="#000000"
-          >
-            <div
-              class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200"
-            ></div>
-          </div>
-          <div
-            class="color-button group relative border-gray-300 rounded-xl w-10 h-10 cursor-pointer hover:scale-125 transition-all duration-200 shadow-md hover:shadow-lg overflow-hidden"
-            style="background-color: #4b5563"
-            data-color="#4B5563"
-          >
-            <div
-              class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200"
-            ></div>
-          </div>
-          <div
-            class="color-button group relative border-gray-300 rounded-xl w-10 h-10 cursor-pointer hover:scale-125 transition-all duration-200 shadow-md hover:shadow-lg overflow-hidden"
-            style="background-color: #7c2d12"
-            data-color="#7C2D12"
-          >
-            <div
-              class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200"
-            ></div>
-          </div>
-          <div
-            class="color-button group relativ border-gray-300 rounded-xl w-10 h-10 cursor-pointer hover:scale-125 transition-all duration-200 shadow-md hover:shadow-lg overflow-hidden"
-            style="background-color: #b91c1c"
-            data-color="#B91C1C"
-          >
-            <div
-              class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200"
-            ></div>
-          </div>
-          <div
-            class="color-button group relative border-gray-300 rounded-xl w-10 h-10 cursor-pointer hover:scale-125 transition-all duration-200 shadow-md hover:shadow-lg overflow-hidden"
-            style="background-color: #1e40af"
-            data-color="#1E40AF"
-          >
-            <div
-              class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200"
-            ></div>
-          </div>
-          <div
-            class="color-button group relative border-gray-300 rounded-xl w-10 h-10 cursor-pointer hover:scale-125 transition-all duration-200 shadow-md hover:shadow-lg overflow-hidden"
-            style="background-color: #581c87"
-            data-color="#581C87"
-          >
-            <div
-              class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200"
-            ></div>
-          </div>
+      </div>
 
-          <!-- Rangée 2: Couleurs vives -->
+      <!-- Contrôles -->
+      <div class="flex justify-center pt-4 gap-4">
+        <button id="spinBtn"
+          class="group relative px-8 py-4 bg-gradient-to-r from-red-400 via-pink-500 to-orange-500 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 border-2 border-white/30">
+          <span
+            class="font-handwriting text-white text-2xl font-bold drop-shadow-lg group-hover:scale-110 transition-transform duration-200">
+            🎰 TOURNER LA ROUE !
+          </span>
           <div
-            class="color-button group relative border-gray-300 rounded-xl w-10 h-10 cursor-pointer hover:scale-125 transition-all duration-200 shadow-md hover:shadow-lg overflow-hidden"
-            style="background-color: #ef4444"
-            data-color="#EF4444"
-          >
-            <div
-              class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200"
-            ></div>
+            class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">
           </div>
-          <div
-            class="color-button group relative border-gray-300 rounded-xl w-10 h-10 cursor-pointer hover:scale-125 transition-all duration-200 shadow-md hover:shadow-lg overflow-hidden"
-            style="background-color: #f97316"
-            data-color="#F97316"
-          >
-            <div
-              class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200"
-            ></div>
-          </div>
-          <div
-            class="color-button group relative border-gray-300 rounded-xl w-10 h-10 cursor-pointer hover:scale-125 transition-all duration-200 shadow-md hover:shadow-lg overflow-hidden"
-            style="background-color: #eab308"
-            data-color="#EAB308"
-          >
-            <div
-              class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200"
-            ></div>
-          </div>
-          <div
-            class="color-button group relative border-gray-300 rounded-xl w-10 h-10 cursor-pointer hover:scale-125 transition-all duration-200 shadow-md hover:shadow-lg overflow-hidden"
-            style="background-color: #22c55e"
-            data-color="#22C55E"
-          >
-            <div
-              class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200"
-            ></div>
-          </div>
-          <div
-            class="color-button group relative border-gray-300 rounded-xl w-10 h-10 cursor-pointer hover:scale-125 transition-all duration-200 shadow-md hover:shadow-lg overflow-hidden"
-            style="background-color: #06b6d4"
-            data-color="#06B6D4"
-          >
-            <div
-              class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200"
-            ></div>
-          </div>
-          <div
-            class="color-button group relative border-gray-300 rounded-xl w-10 h-10 cursor-pointer hover:scale-125 transition-all duration-200 shadow-md hover:shadow-lg overflow-hidden"
-            style="background-color: #a855f7"
-            data-color="#A855F7"
-          >
-            <div
-              class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200"
-            ></div>
-          </div>
+        </button>
 
-          <!-- Rangée 3: Couleurs terre et naturelles -->
-          <div
-            class="color-button group relative border-gray-300 rounded-xl w-10 h-10 cursor-pointer hover:scale-125 transition-all duration-200 shadow-md hover:shadow-lg overflow-hidden"
-            style="background-color: #a0522d"
-            data-color="#A0522D"
-          >
-            <div
-              class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200"
-            ></div>
-          </div>
-          <div
-            class="color-button group relative border-gray-300 rounded-xl w-10 h-10 cursor-pointer hover:scale-125 transition-all duration-200 shadow-md hover:shadow-lg overflow-hidden"
-            style="background-color: #d2691e"
-            data-color="#D2691E"
-          >
-            <div
-              class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200"
-            ></div>
-          </div>
-          <div
-            class="color-button group relative border-gray-300 rounded-xl w-10 h-10 cursor-pointer hover:scale-125 transition-all duration-200 shadow-md hover:shadow-lg overflow-hidden"
-            style="background-color: #f5deb3"
-            data-color="#F5DEB3"
-          >
-            <div
-              class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200"
-            ></div>
-          </div>
-          <div
-            class="color-button group relative border-4 border-gray-300 rounded-xl w-10 h-10 cursor-pointer hover:scale-125 transition-all duration-200 shadow-md hover:shadow-lg overflow-hidden"
-            style="background-color: #d3d3d3"
-            data-color="#D3D3D3"
-          >
-            <div
-              class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200"
-            ></div>
-          </div>
-          <div
-            class="color-button group relative border-gray-300 rounded-xl w-10 h-10 cursor-pointer hover:scale-125 transition-all duration-200 shadow-md hover:shadow-lg overflow-hidden"
-            style="background-color: #708090"
-            data-color="#708090"
-          >
-            <div
-              class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200"
-            ></div>
-          </div>
-          <div
-            class="color-button group relative border-gray-300 rounded-xl w-10 h-10 cursor-pointer hover:scale-125 transition-all duration-200 shadow-md hover:shadow-lg overflow-hidden"
-            style="background-color: #ffffff"
-            data-color="#FFFFFF"
-          >
-            <div
-              class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200"
-            ></div>
-          </div>
+        <div id="result"
+          class="px-6 py-4 bg-white/90 rounded-2xl shadow-xl backdrop-blur-sm border-2 border-white/50 min-w-[200px] flex items-center justify-center hidden">
+          <span class="font-handwriting text-xl font-bold text-gray-800"></span>
         </div>
       </div>
-    </aside>
+    </div>
+  </div>
 
-    <script>
-      // Configuration Tailwind pour la font Indie Flower
-      tailwind.config = {
-        theme: {
-          extend: {
-            fontFamily: {
-              handwriting: ['"Indie Flower"', "cursive"],
-            },
+  <script>
+    // Configuration Tailwind pour la font Indie Flower
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            handwriting: ['"Indie Flower"', 'cursive'],
           },
+          animation: {
+            'fadeIn': 'fadeIn 0.5s ease-out',
+            'fadeOut': 'fadeOut 0.5s ease-in',
+            'scaleIn': 'scaleIn 0.3s ease-out',
+          },
+          keyframes: {
+            fadeIn: {
+              '0%': { opacity: '0', transform: 'scale(0.9)' },
+              '100%': { opacity: '1', transform: 'scale(1)' },
+            },
+            fadeOut: {
+              '0%': { opacity: '1', transform: 'scale(1)' },
+              '100%': { opacity: '0', transform: 'scale(0.9)' },
+            },
+            scaleIn: {
+              '0%': { transform: 'scale(0.8)' },
+              '100%': { transform: 'scale(1)' },
+            }
+          }
         },
-      };
-    </script>
-    <script type="module" src="./script.js"></script>
-  </body>
+      },
+    }
+  </script>
+  <script type="module" src="./script.js"></script>
+  <script type="module">
+    import WheelExperience from './Experience/WheelExperience.js';
+
+    // Variables du modal
+    let wheelModal, closeBtn, wheelExperience;
+
+    // Initialisation quand la page est chargée
+    document.addEventListener('DOMContentLoaded', () => {
+      // Récupération des éléments du modal
+      wheelModal = document.getElementById('wheelModal');
+      closeBtn = document.getElementById('closeModal');
+
+      // Initialiser l'expérience avec wheel.js
+      wheelExperience = new WheelExperience();
+      console.log('🎰 Wheel experience initialized!');
+
+      // Écouteur pour fermer manuellement
+      if (closeBtn) {
+        closeBtn.addEventListener('click', closeModal);
+      }
+
+      // Fermer le modal en cliquant sur l'overlay
+      if (wheelModal) {
+        wheelModal.addEventListener('click', (e) => {
+          if (e.target === wheelModal) {
+            closeModal();
+          }
+        });
+      }
+
+      // Intercepter la méthode showResult pour fermer automatiquement le modal
+      if (wheelExperience && wheelExperience.wheel) {
+        const originalShowResult = wheelExperience.wheel.showResult.bind(wheelExperience.wheel);
+        wheelExperience.wheel.showResult = function (segment) {
+          // Appeler la méthode originale
+          originalShowResult(segment);
+
+          // Fermer le modal après 3 secondes
+          setTimeout(() => {
+            closeModal();
+          }, 3000);
+        };
+      }
+
+      // Afficher le modal au chargement (après un petit délai)
+      setTimeout(showModal, 1000);
+    });
+
+    function showModal() {
+      if (wheelModal) {
+        wheelModal.classList.remove('hidden');
+        wheelModal.style.display = 'flex';
+        wheelModal.classList.add('animate-fadeIn');
+      }
+    }
+
+    function closeModal() {
+      if (wheelModal) {
+        wheelModal.classList.remove('animate-fadeIn');
+        wheelModal.classList.add('animate-fadeOut');
+
+        setTimeout(() => {
+          wheelModal.style.display = 'none';
+          wheelModal.classList.add('hidden');
+          wheelModal.classList.remove('animate-fadeOut');
+        }, 500);
+      }
+    }
+  </script>
+</body>
+
 </html>
