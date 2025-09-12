@@ -1,8 +1,8 @@
 import Time from "./Utils/Time.js";
 import Debug from "./Utils/Debug.js";
 import Paint from "./Paint.js";
-import Mouse from "./Utils/Mouse.js";
 import Tools from "./Tools.js";
+import Mouse from "./Utils/Mouse.js";
 import Game from "./Game.js";
 import Image from "./Image.js";
 
@@ -22,7 +22,7 @@ export default class Experience {
     this.debug = new Debug();
     this.paint = new Paint();
     this.tools = new Tools();
-    this.mouse = new Mouse();
+    this.mouse = new Mouse(this);
     this.time = new Time();
     this.game = new Game();
     this.image = new Image();
